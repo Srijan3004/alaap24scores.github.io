@@ -1,11 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="30"> <!-- Refresh every 30 seconds -->
-    <title>Scores</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="30"> <!-- Refresh every 30 seconds -->
+  <title>Scores</title>
 </head>
 <body>
-    <div id="scores"></div>
+  <div id="scores"></div>
+
+  <script>
+    function updateScores() {
+      // Fetch data from GitHub Gist
+      fetch('https://api.github.com/gists/YOUR_GIST_ID')
+        .then(response => response.json())
+        .then(data => {
+          // Extract scores from the data
+          const scores = data.files['scores.json'].content;
+          document.getElementById('scores').innerHTML = scores;
+        })
+        .catch(error => console.error('Error fetching scores:', error));
+    }
+
+    // Update scores initially
+    updateScores();
+
+    // Update scores every 30 seconds
+    setInterval(updateScores, 30000);
+  </script>
 </body>
 </html>
