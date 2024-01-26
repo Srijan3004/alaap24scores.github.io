@@ -4,8 +4,52 @@
   <meta charset="UTF-8">
   <meta http-equiv="refresh" content="30"> <!-- Refresh every 30 seconds -->
   <title>Scores</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    #scores {
+      text-align: center;
+    }
+
+    .judge-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 10px;
+    }
+
+    .judge {
+      margin: 0 20px;
+    }
+
+    .judge img {
+      width: 50px; /* Adjust the width of judge images */
+      border-radius: 50%;
+    }
+  </style>
 </head>
 <body>
+  <h1>Participant: <span id="participant-name"></span></h1>
+
+  <div class="judge-container">
+    <div class="judge">
+      <img src="monali.jpg" alt="Judge 1">
+      <p>Monali Paladhi</p>
+    </div>
+
+    <div class="judge">
+      <img src="surankan bhowmick.jpg" alt="Judge 2">
+      <p>Surankan Bhowmick</p>
+    </div>
+  </div>
+
   <div id="scores"></div>
 
   <script>
@@ -14,9 +58,18 @@
       fetch('https://api.github.com/gists/1fbabd630c4d400014fcc6acd9f24f6a')
         .then(response => response.json())
         .then(data => {
+          // Extract and display participant name
+          document.getElementById('participant-name').innerText = data.participant;
+
           // Extract scores from the data
-          const scores = data.files['scores.json'].content;
-          document.getElementById('scores').innerHTML = scores;
+          const judge1Score = data.judge1;
+          const judge2Score = data.judge2;
+
+          // Display scores
+          document.getElementById('scores').innerHTML = `
+            <p>Judge 1 Score: ${judge1Score}</p>
+            <p>Judge 2 Score: ${judge2Score}</p>
+          `;
         })
         .catch(error => console.error('Error fetching scores:', error));
     }
