@@ -11,7 +11,7 @@
   <script>
     function updateScores() {
       // Fetch data from GitHub Gist
-      fetch('https://gist.github.com/Srijan3004/d6d12f8c564636adaa1ff8c9ca599453')
+      fetch('https://api.github.com/gists/1fbabd630c4d400014fcc6acd9f24f6a')
         .then(response => response.json())
         .then(data => {
           // Extract scores from the data
