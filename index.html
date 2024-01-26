@@ -59,7 +59,7 @@
         .then(response => response.json())
         .then(data => {
           // Extract and display participant name
-          document.getElementById('participant-name').innerText = data.participant;
+          document.getElementById('participant').innerText = data.participant;
 
           // Extract scores from the data
           const judge1Score = data.judge1;
