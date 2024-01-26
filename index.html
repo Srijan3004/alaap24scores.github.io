@@ -66,6 +66,9 @@
       fetch('https://api.github.com/gists/1fbabd630c4d400014fcc6acd9f24f6a')
         .then(response => response.json())
         .then(data => {
+          // Log the entire JSON data
+          console.log(data);
+
           // Extract and display participant name
           document.getElementById('participant').innerText = data.participant;
 
