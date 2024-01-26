@@ -63,7 +63,11 @@
   <script>
     function updateScores() {
       // Fetch data from GitHub Gist
-      fetch('https://api.github.com/gists/1fbabd630c4d400014fcc6acd9f24f6a')
+      fetch('https://api.github.com/gists/1fbabd630c4d400014fcc6acd9f24f6a', {
+  headers: {
+    Authorization: 'Bearer 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'
+  }
+})
         .then(response => response.json())
         .then(data => {
           // Log the entire JSON data
