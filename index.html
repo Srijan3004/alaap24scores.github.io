@@ -44,56 +44,28 @@
   </style>
 </head>
 <body>
-  <h1>Participant: <span id="participant"></span></h1>
+  <h1>Participant: Srijan</h1>
 
   <div class="judge-container">
     <div class="judge">
       <img src="monali.jpg" alt="Judge 1">
       <p>Monali Paladhi</p>
+      <p>Judge 1 Scores:</p>
+      <p>Score 1: 9</p>
+      <p>Score 2: 8</p>
+      <p>Score 3: 7</p>
     </div>
 
     <div class="judge">
       <img src="surankan bhowmick.jpg" alt="Judge 2">
       <p>Surankan Bhowmick</p>
+      <p>Judge 2 Scores:</p>
+      <p>Score 1: 8</p>
+      <p>Score 2: 7</p>
+      <p>Score 3: 6</p>
     </div>
   </div>
 
   <div id="scores"></div>
-
-  <script>
-    function updateScores() {
-      // Fetch data from GitHub Gist
-      fetch('https://gist.github.com/Srijan3004/1fbabd630c4d400014fcc6acd9f24f6a', {
-  headers: {
-    Authorization: 'Bearer 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'
-  }
-})
-        .then(response => response.json())
-        .then(data => {
-          // Log the entire JSON data
-          console.log(data);
-
-          // Extract and display participant name
-          document.getElementById('participant').innerText = data.participant;
-
-          // Extract scores from the data
-          const judge1Score = data.judge1;
-          const judge2Score = data.judge2;
-
-          // Display scores using correct variable names
-          document.getElementById('scores').innerHTML = `
-            <p>Judge 1 Score: ${judge1Score}</p>
-            <p>Judge 2 Score: ${judge2Score}</p>
-          `;
-        })
-        .catch(error => console.error('Error fetching scores:', error));
-    }
-
-    // Update scores initially
-    updateScores();
-
-    // Update scores every 30 seconds
-    setInterval(updateScores, 30000);
-  </script>
 </body>
 </html>
